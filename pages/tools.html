@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ツール一覧 | SancStudy</title>
+  <meta name="description" content="SancStudyの学習ツール一覧。宿題マネージャーで毎日の学習をスマートに管理しよう。">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo"><img src="assets/logo.png" alt="SancStudy ロゴ"></a>
+    <button class="nav__hamburger" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav__overlay"></div>
+  <div class="nav__menu">
+    <ul>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="games.html">ゲーム</a></li>
+      <li><a href="tools.html">ツール</a></li>
+      <li><a href="howto.html">使い方</a></li>
+      <li><a href="about.html">運営について</a></li>
+      <li><a href="news.html">更新情報</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <p class="section-label" style="color:rgba(255,255,255,.7)">Tools</p>
+    <h1 class="page-header__title">学習ツール</h1>
+    <p class="page-header__sub">毎日の学習をスマートにサポート。提出忘れゼロを目指そう。</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Homework Manager Detail -->
+    <article id="homework-manager">
+      <div class="about__grid">
+        <div data-reveal="left">
+          <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)">
+            <img src="assets/homework_manager.webp" alt="宿題マネージャー" style="width:100%;display:block">
+          </div>
+        </div>
+        <div data-reveal="right">
+          <span class="card__badge card__badge--tool" style="display:inline-block;margin-bottom:1rem">Tool</span>
+          <p class="section-label" style="color:#059669">学習管理</p>
+          <h2 class="section-title">宿題マネージャー</h2>
+          <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1rem">Googleアカウントでログインすると、スマホ・PCなど複数の端末で宿題データを同期できます。提出忘れをゼロにして、毎日の学習をスマートに管理しましょう。</p>
+          <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1.5rem">ログインなしでもこの端末だけで使用可能。まずは気軽に試してみてください。</p>
+
+          <!-- Features -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem">
+            <div style="background:var(--blue-pale);border-radius:var(--radius-sm);padding:14px 16px">
+              <div style="font-size:1.2rem;margin-bottom:.4rem">📱</div>
+              <div style="font-size:.85rem;font-weight:700;margin-bottom:.25rem">マルチデバイス同期</div>
+              <div style="font-size:.8rem;color:var(--gray-600)">スマホ・PC・タブレットで同じデータを共有</div>
+            </div>
+            <div style="background:var(--blue-pale);border-radius:var(--radius-sm);padding:14px 16px">
+              <div style="font-size:1.2rem;margin-bottom:.4rem">🔔</div>
+              <div style="font-size:.85rem;font-weight:700;margin-bottom:.25rem">提出忘れ防止</div>
+              <div style="font-size:.8rem;color:var(--gray-600)">締め切りを管理して提出漏れをなくす</div>
+            </div>
+            <div style="background:var(--blue-pale);border-radius:var(--radius-sm);padding:14px 16px">
+              <div style="font-size:1.2rem;margin-bottom:.4rem">🔒</div>
+              <div style="font-size:.85rem;font-weight:700;margin-bottom:.25rem">Googleログイン対応</div>
+              <div style="font-size:.8rem;color:var(--gray-600)">安全なGoogleアカウント認証</div>
+            </div>
+            <div style="background:var(--blue-pale);border-radius:var(--radius-sm);padding:14px 16px">
+              <div style="font-size:1.2rem;margin-bottom:.4rem">✅</div>
+              <div style="font-size:.85rem;font-weight:700;margin-bottom:.25rem">無料で使える</div>
+              <div style="font-size:.8rem;color:var(--gray-600)">すべての機能が完全無料</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.5rem">
+            <span class="about__meta-item">対象: 中学生〜高校生</span>
+            <span class="about__meta-item">登録: 任意（Googleアカウント）</span>
+            <span class="about__meta-item">v1.5</span>
+          </div>
+          <a href="https://homework-manager-azure.vercel.app/" target="_blank" rel="noopener" class="btn-primary" style="background:#059669;box-shadow:0 4px 14px rgba(5,150,105,.35)">
+            今すぐ使う
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Coming Soon -->
+    <div style="margin-top:80px;text-align:center;padding:64px 24px;background:var(--gray-100);border-radius:var(--radius-lg)" data-reveal>
+      <div style="font-size:2.5rem;margin-bottom:1rem">🚀</div>
+      <h3 style="font-size:1.4rem;font-weight:700;margin-bottom:.75rem">新しいツールを開発中</h3>
+      <p style="color:var(--gray-600);max-width:480px;margin:0 auto 1.5rem">単語帳ツール・時間割管理など、新しい学習ツールを順次リリース予定です。フィードバックフォームからリクエストもお待ちしています。</p>
+      <a href="index.html#reviews" class="btn-outline">フィードバックを送る</a>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__feedback" data-reveal>
+      <h3>バグ報告・改善提案・ご要望</h3>
+      <p>気になった点や「こんな機能が欲しい！」という声をお聞かせください。</p>
+      <form id="feedback-form" novalidate>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-group">
+            <label for="fb-type">種類</label>
+            <select id="fb-type" name="fb-type">
+              <option value="bug">バグ報告</option>
+              <option value="improvement">改善提案</option>
+              <option value="request">機能リクエスト</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fb-site">対象サイト</label>
+            <select id="fb-site" name="fb-site">
+              <option value="homework">宿題マネージャー</option>
+              <option value="all">全体</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fb-content">内容</label>
+          <textarea id="fb-content" name="fb-content" placeholder="詳細を教えてください..." rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">送信する</button>
+      </form>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo"><img src="assets/logo.png" alt="SancStudy"><span>SancStudy</span></a>
+        <p class="footer__tagline">学びを、もっと楽しく。もっと身近に。</p>
+      </div>
+      <div class="footer__col">
+        <h4>コンテンツ</h4>
+        <ul>
+          <li><a href="games.html">ゲーム一覧</a></li>
+          <li><a href="tools.html">ツール一覧</a></li>
+          <li><a href="news.html">更新情報</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>SancStudy</h4>
+        <ul>
+          <li><a href="howto.html">使い方</a></li>
+          <li><a href="about.html">運営について</a></li>
+          <li><a href="index.html#reviews">レビュー</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2025–2026 SancStudy. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

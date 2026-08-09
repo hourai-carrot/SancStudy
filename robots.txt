@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sancstudy.example.com/sitemap.xml

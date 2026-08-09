@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SancStudy - 学びを、もっと楽しく。もっと身近に。</title>
+  <meta name="description" content="SancStudyは中高生向けの学習ゲーム・ツールポータルです。漢字大戦、LEAP OVER QUEST、Prime Striker、宿題マネージャーで楽しく学ぼう。">
+  <meta name="keywords" content="SancStudy,中高生,学習,ゲーム,漢字,英単語,数学,宿題管理">
+  <meta property="og:title" content="SancStudy - 学びを、もっと楽しく。もっと身近に。">
+  <meta property="og:description" content="中高生向け学習ゲーム・ツールポータル。楽しみながら学力アップ。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sancstudy.example.com/">
+  <link rel="canonical" href="https://sancstudy.example.com/">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SancStudy",
+    "url": "https://sancstudy.example.com/",
+    "description": "中高生向け学習ゲーム・ツールポータル",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://sancstudy.example.com/games.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" role="navigation" aria-label="メインナビゲーション">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <img src="assets/logo.png" alt="SancStudy ロゴ">
+    </a>
+    <button class="nav__hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__overlay"></div>
+  <div class="nav__menu" role="dialog" aria-label="ナビゲーションメニュー">
+    <ul>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="games.html">ゲーム</a></li>
+      <li><a href="tools.html">ツール</a></li>
+      <li><a href="howto.html">使い方</a></li>
+      <li><a href="about.html">運営について</a></li>
+      <li><a href="news.html">更新情報</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO SLIDER ===== -->
+<section class="hero" aria-label="メインビジュアル">
+  <div class="hero__slides">
+
+    <!-- Slide 1: KANJI WAR -->
+    <div class="hero__slide" data-href="https://hourai-carrot.github.io/KANJI-WAR/">
+      <div class="hero__slide-bg" style="background-image:url('assets/kanji_war.webp')"></div>
+      <div class="hero__slide-overlay"></div>
+      <div class="hero__slide-content">
+        <span class="hero__slide-tag">Game</span>
+        <h1 class="hero__slide-title">漢字大戦<br>KANJI WAR</h1>
+        <p class="hero__slide-desc">墨に歪められし文字の世界へ。<br>漢字の読み書きをバトル形式で楽しく習得しよう。</p>
+        <a href="https://hourai-carrot.github.io/KANJI-WAR/" target="_blank" rel="noopener" class="hero__slide-btn">
+          今すぐプレイ
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Slide 2: LEAP OVER QUEST -->
+    <div class="hero__slide" data-href="https://hourai-carrot.github.io/LEAP-OVER-QUEST/">
+      <div class="hero__slide-bg" style="background-image:url('assets/leap_over_quest.webp')"></div>
+      <div class="hero__slide-overlay"></div>
+      <div class="hero__slide-content">
+        <span class="hero__slide-tag">Game</span>
+        <h2 class="hero__slide-title">LEAP OVER<br>QUEST</h2>
+        <p class="hero__slide-desc">RPGで英単語を制覇せよ。<br>クエストをクリアしながら英語力を鍛えよう。</p>
+        <a href="https://hourai-carrot.github.io/LEAP-OVER-QUEST/" target="_blank" rel="noopener" class="hero__slide-btn">
+          今すぐプレイ
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Slide 3: Prime Striker -->
+    <div class="hero__slide" data-href="https://beeeeach.github.io/Prime-Striker/">
+      <div class="hero__slide-bg" style="background-image:url('assets/prime_striker.webp')"></div>
+      <div class="hero__slide-overlay"></div>
+      <div class="hero__slide-content">
+        <span class="hero__slide-tag">Game</span>
+        <h2 class="hero__slide-title">Prime<br>Striker</h2>
+        <p class="hero__slide-desc">素因数分解でバトル！<br>数学の力を武器にオンライン対戦に挑め。</p>
+        <a href="https://beeeeach.github.io/Prime-Striker/" target="_blank" rel="noopener" class="hero__slide-btn">
+          今すぐプレイ
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Slide 4: Homework Manager -->
+    <div class="hero__slide" data-href="https://homework-manager-azure.vercel.app/">
+      <div class="hero__slide-bg" style="background-image:url('assets/homework_manager.webp');background-color:#1a56db"></div>
+      <div class="hero__slide-overlay"></div>
+      <div class="hero__slide-content">
+        <span class="hero__slide-tag">Tool</span>
+        <h2 class="hero__slide-title">宿題<br>マネージャー</h2>
+        <p class="hero__slide-desc">提出忘れゼロへ。<br>スマホ・PCで同期できる宿題管理ツール。</p>
+        <a href="https://homework-manager-azure.vercel.app/" target="_blank" rel="noopener" class="hero__slide-btn">
+          今すぐ使う
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <button class="hero__arrow hero__arrow--prev" aria-label="前のスライド">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="hero__arrow hero__arrow--next" aria-label="次のスライド">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="hero__controls">
+    <button class="hero__dot" aria-label="スライド1"></button>
+    <button class="hero__dot" aria-label="スライド2"></button>
+    <button class="hero__dot" aria-label="スライド3"></button>
+    <button class="hero__dot" aria-label="スライド4"></button>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===== QUICK INTRO ===== -->
+<section class="intro" aria-labelledby="intro-heading">
+  <div class="container">
+    <p class="section-label" style="color:rgba(255,255,255,.7)">SancStudyとは</p>
+    <h2 id="intro-heading" class="section-title" style="color:#fff" data-reveal>学びを、もっと楽しく。<br>もっと身近に。</h2>
+    <p class="section-subtitle" style="color:rgba(255,255,255,.8)" data-reveal>SancStudyは、中高生が楽しみながら学べるゲーム・ツールを厳選したポータルサイトです。すべてのコンテンツは私たち自身が開発・運営しており、安心してご利用いただけます。</p>
+    <div class="intro__grid">
+      <div class="intro__card" data-reveal data-reveal-delay="1">
+        <div class="intro__card-icon">🎮</div>
+        <div class="intro__card-title">ゲームで学ぶ</div>
+        <div class="intro__card-text">漢字・英単語・数学をゲーム感覚で習得。楽しみながら自然と実力がつく。</div>
+      </div>
+      <div class="intro__card" data-reveal data-reveal-delay="2">
+        <div class="intro__card-icon">📋</div>
+        <div class="intro__card-title">ツールで管理</div>
+        <div class="intro__card-text">宿題・課題をスマートに管理。提出忘れゼロで毎日の学習をサポート。</div>
+      </div>
+      <div class="intro__card" data-reveal data-reveal-delay="3">
+        <div class="intro__card-icon">🔒</div>
+        <div class="intro__card-title">安心・安全</div>
+        <div class="intro__card-text">すべて自分たちで開発・運営。外部リンクの安全性も私たちが保証します。</div>
+      </div>
+      <div class="intro__card" data-reveal data-reveal-delay="4">
+        <div class="intro__card-icon">📱</div>
+        <div class="intro__card-title">どこでも使える</div>
+        <div class="intro__card-text">スマホ・タブレット・PCに完全対応。通学中でも自宅でも学習できる。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW TO USE ===== -->
+<section class="section" id="howto-quick" aria-labelledby="howto-heading">
+  <div class="container text-center">
+    <p class="section-label">使い方</p>
+    <h2 id="howto-heading" class="section-title" data-reveal>3ステップで始められる</h2>
+    <p class="section-subtitle" data-reveal>アカウント登録不要。今すぐ無料で使い始めよう。</p>
+    <div class="howto__steps">
+      <div class="howto__step" data-reveal data-reveal-delay="1">
+        <div class="howto__step-icon">🔍</div>
+        <div class="howto__step-title">コンテンツを選ぶ</div>
+        <div class="howto__step-text">ゲームページやツールページから、気になるコンテンツを見つけよう。</div>
+      </div>
+      <div class="howto__step" data-reveal data-reveal-delay="2">
+        <div class="howto__step-icon">🚀</div>
+        <div class="howto__step-title">ボタンをタップ</div>
+        <div class="howto__step-text">「今すぐプレイ」や「今すぐ使う」ボタンを押すだけ。登録不要で即スタート。</div>
+      </div>
+      <div class="howto__step" data-reveal data-reveal-delay="3">
+        <div class="howto__step-icon">📈</div>
+        <div class="howto__step-title">楽しみながら成長</div>
+        <div class="howto__step-text">ゲームをクリアしたり、宿題を管理したりしながら自然と学力アップ！</div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem" data-reveal>
+      <a href="howto.html" class="btn-outline">詳しい使い方を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GAMES PREVIEW ===== -->
+<section class="section section--gray" id="games" aria-labelledby="games-heading">
+  <div class="container">
+    <p class="section-label">Games</p>
+    <h2 id="games-heading" class="section-title" data-reveal>学習ゲーム</h2>
+    <p class="section-subtitle" data-reveal>ゲームをクリアするたびに、本物の学力が身につく。</p>
+    <div class="cards-grid">
+
+      <article class="card" data-reveal data-reveal-delay="1">
+        <div class="card__thumb">
+          <img src="assets/kanji_war.webp" alt="漢字大戦 KANJI WAR のゲーム画面" loading="lazy">
+          <span class="card__badge">Game</span>
+        </div>
+        <div class="card__body">
+          <div class="card__tag">国語 / 漢字</div>
+          <h3 class="card__title">漢字大戦 KANJI WAR</h3>
+          <p class="card__desc">墨に歪められし文字の世界でバトル。漢字の読み書きをゲーム感覚で習得できる本格的な学習ゲーム。</p>
+          <div class="card__meta">
+            <span class="card__meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              プレイ時間: 10〜30分
+            </span>
+            <span class="card__meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              中学生〜
+            </span>
+          </div>
+          <a href="https://hourai-carrot.github.io/KANJI-WAR/" target="_blank" rel="noopener" class="card__btn">
+            今すぐプレイ
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="card__update">最終更新: 2026年6月 · v1.0</div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal data-reveal-delay="2">
+        <div class="card__thumb">
+          <img src="assets/leap_over_quest.webp" alt="LEAP OVER QUEST のゲーム画面" loading="lazy">
+          <span class="card__badge">Game</span>
+        </div>
+        <div class="card__body">
+          <div class="card__tag">英語 / 英単語</div>
+          <h3 class="card__title">LEAP OVER QUEST</h3>
+          <p class="card__desc">RPG形式で英単語を習得。初級〜絶望まで5段階のクエストで、楽しみながら英語力を鍛えよう。</p>
+          <div class="card__meta">
+            <span class="card__meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              プレイ時間: 15〜60分
+            </span>
+            <span class="card__meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              中学生〜高校生
+            </span>
+          </div>
+          <a href="https://hourai-carrot.github.io/LEAP-OVER-QUEST/" target="_blank" rel="noopener" class="card__btn">
+            今すぐプレイ
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="card__update">最終更新: 2026年7月 · v2.1</div>
+        </div>
+      </article>
+
+      <article class="card" data-reveal data-reveal-delay="3">
+        <div class="card__thumb">
+          <img src="assets/prime_striker.webp" alt="Prime Striker のゲーム画面" loading="lazy">
+          <span class="card__badge">Game</span>
+        </div>
+        <div class="card__body">
+          <div class="card__tag">数学 / 素因数分解</div>
+          <h3 class="card__title">Prime Striker</h3>
+          <p class="card__desc">素因数分解でオンライン対戦！数学の力を武器にリアルタイムバトルを楽しもう。</p>
+          <div class="card__meta">
+            <span class="card__meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              プレイ時間: 5〜20分
+            </span>
+            <span class="card__meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              中学生〜高校生
+            </span>
+          </div>
+          <a href="https://beeeeach.github.io/Prime-Striker/" target="_blank" rel="noopener" class="card__btn">
+            今すぐプレイ
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="card__update">最終更新: 2026年7月 · v1.3</div>
+        </div>
+      </article>
+
+    </div>
+    <div class="text-center mt-3" data-reveal>
+      <a href="games.html" class="btn-outline">すべてのゲームを見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats" aria-label="利用実績">
+  <div class="container">
+    <div class="stats__grid">
+      <div data-reveal>
+        <div class="stats__num"><span data-count="1200">0</span>+</div>
+        <div class="stats__label">月間利用者数</div>
+      </div>
+      <div data-reveal data-reveal-delay="1">
+        <div class="stats__num"><span data-count="4">0</span></div>
+        <div class="stats__label">コンテンツ数</div>
+      </div>
+      <div data-reveal data-reveal-delay="2">
+        <div class="stats__num"><span data-count="96">0</span>%</div>
+        <div class="stats__label">満足度（レビュー集計）</div>
+      </div>
+      <div data-reveal data-reveal-delay="3">
+        <div class="stats__num"><span data-count="3">0</span></div>
+        <div class="stats__label">運営メンバー</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOOLS PREVIEW ===== -->
+<section class="section" id="tools" aria-labelledby="tools-heading">
+  <div class="container">
+    <p class="section-label">Tools</p>
+    <h2 id="tools-heading" class="section-title" data-reveal>学習ツール</h2>
+    <p class="section-subtitle" data-reveal>毎日の学習をスマートにサポートするツール。</p>
+    <div class="cards-grid" style="max-width:500px">
+      <article class="card" data-reveal>
+        <div class="card__thumb">
+          <img src="assets/homework_manager.webp" alt="宿題マネージャーの画面" loading="lazy">
+          <span class="card__badge card__badge--tool">Tool</span>
+        </div>
+        <div class="card__body">
+          <div class="card__tag" style="color:#059669">学習管理</div>
+          <h3 class="card__title">宿題マネージャー</h3>
+          <p class="card__desc">Googleアカウントでログインすると、スマホ・PCなど複数の端末で宿題データを同期。提出忘れをゼロにしよう。</p>
+          <div class="card__meta">
+            <span class="card__meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              スマホ・PC対応
+            </span>
+          </div>
+          <a href="https://homework-manager-azure.vercel.app/" target="_blank" rel="noopener" class="card__btn" style="background:#059669">
+            今すぐ使う
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="card__update">最終更新: 2026年8月 · v1.5</div>
+        </div>
+      </article>
+    </div>
+    <div class="text-center mt-3" data-reveal>
+      <a href="tools.html" class="btn-outline">ツール詳細を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="section section--gray" id="reviews" aria-labelledby="reviews-heading">
+  <div class="container">
+    <p class="section-label">Reviews</p>
+    <h2 id="reviews-heading" class="section-title text-center" data-reveal>みんなの声</h2>
+    <p class="section-subtitle text-center" data-reveal>実際に使っているユーザーのレビュー。</p>
+
+    <!-- Summary -->
+    <div class="reviews__summary" data-reveal>
+      <div class="reviews__avg" id="review-avg">—</div>
+      <div>
+        <div class="reviews__stars-big" id="big-stars">☆☆☆☆☆</div>
+        <div class="reviews__count" id="review-count">0件のレビュー</div>
+      </div>
+      <div class="reviews__bar-wrap">
+        <div class="reviews__bar-row"><span>5★</span><div class="reviews__bar-bg"><div class="reviews__bar-fill" id="bar-5" style="width:0%"></div></div></div>
+        <div class="reviews__bar-row"><span>4★</span><div class="reviews__bar-bg"><div class="reviews__bar-fill" id="bar-4" style="width:0%"></div></div></div>
+        <div class="reviews__bar-row"><span>3★</span><div class="reviews__bar-bg"><div class="reviews__bar-fill" id="bar-3" style="width:0%"></div></div></div>
+        <div class="reviews__bar-row"><span>2★</span><div class="reviews__bar-bg"><div class="reviews__bar-fill" id="bar-2" style="width:0%"></div></div></div>
+        <div class="reviews__bar-row"><span>1★</span><div class="reviews__bar-bg"><div class="reviews__bar-fill" id="bar-1" style="width:0%"></div></div></div>
+      </div>
+    </div>
+
+    <!-- Review cards -->
+    <div class="reviews__grid" id="review-list"></div>
+
+    <!-- Review form -->
+    <div class="review-form" data-reveal>
+      <div class="review-form__title">レビューを投稿する</div>
+      <form id="review-form" novalidate>
+        <div class="form-group">
+          <label for="reviewer-name">ニックネーム</label>
+          <input type="text" id="reviewer-name" name="reviewer-name" placeholder="例: 中2 Kさん" maxlength="30" required>
+        </div>
+        <div class="form-group">
+          <label>評価</label>
+          <div class="star-picker" role="radiogroup" aria-label="星評価">
+            <span role="radio" aria-label="1星" tabindex="0">★</span>
+            <span role="radio" aria-label="2星" tabindex="0">★</span>
+            <span role="radio" aria-label="3星" tabindex="0">★</span>
+            <span role="radio" aria-label="4星" tabindex="0">★</span>
+            <span role="radio" aria-label="5星" tabindex="0">★</span>
+          </div>
+          <input type="hidden" name="rating" value="">
+        </div>
+        <div class="form-group">
+          <label for="review-comment">コメント</label>
+          <textarea id="review-comment" name="review-comment" placeholder="使ってみた感想を書いてください" maxlength="300" required></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn-primary">投稿する</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+
+    <!-- Feedback Form -->
+    <div class="footer__feedback" data-reveal>
+      <h3>バグ報告・改善提案・ご要望</h3>
+      <p>気になった点や「こんな機能が欲しい！」という声をお聞かせください。みなさんのフィードバックがサービス改善につながります。</p>
+      <form id="feedback-form" novalidate>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-group">
+            <label for="fb-type">種類</label>
+            <select id="fb-type" name="fb-type">
+              <option value="bug">バグ報告</option>
+              <option value="improvement">改善提案</option>
+              <option value="request">機能リクエスト</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fb-site">対象サイト</label>
+            <select id="fb-site" name="fb-site">
+              <option value="all">全体</option>
+              <option value="kanji-war">漢字大戦</option>
+              <option value="leap-over">LEAP OVER QUEST</option>
+              <option value="prime-striker">Prime Striker</option>
+              <option value="homework">宿題マネージャー</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fb-content">内容</label>
+          <textarea id="fb-content" name="fb-content" placeholder="詳細を教えてください..." rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">送信する</button>
+      </form>
+    </div>
+
+    <!-- Footer grid -->
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="assets/logo.png" alt="SancStudy">
+          <span>SancStudy</span>
+        </a>
+        <p class="footer__tagline">学びを、もっと楽しく。もっと身近に。<br>中高生のための学習ゲーム・ツールポータル。<br>運営開始: 2025年4月 / 最終更新: 2026年8月</p>
+      </div>
+      <div class="footer__col">
+        <h4>コンテンツ</h4>
+        <ul>
+          <li><a href="games.html">ゲーム一覧</a></li>
+          <li><a href="tools.html">ツール一覧</a></li>
+          <li><a href="news.html">更新情報</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>SancStudy</h4>
+        <ul>
+          <li><a href="howto.html">使い方</a></li>
+          <li><a href="about.html">運営について</a></li>
+          <li><a href="#reviews">レビュー</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2025–2026 SancStudy. All rights reserved.</span>
+      <span>学びを、もっと楽しく。もっと身近に。</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

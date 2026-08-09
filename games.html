@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゲーム一覧 | SancStudy</title>
+  <meta name="description" content="SancStudyの学習ゲーム一覧。漢字大戦・LEAP OVER QUEST・Prime Strikerで楽しく学ぼう。">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <img src="assets/logo.png" alt="SancStudy ロゴ">
+    </a>
+    <button class="nav__hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__overlay"></div>
+  <div class="nav__menu">
+    <ul>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="games.html">ゲーム</a></li>
+      <li><a href="tools.html">ツール</a></li>
+      <li><a href="howto.html">使い方</a></li>
+      <li><a href="about.html">運営について</a></li>
+      <li><a href="news.html">更新情報</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="page-header">
+  <div class="container">
+    <p class="section-label" style="color:rgba(255,255,255,.7)">Games</p>
+    <h1 class="page-header__title">学習ゲーム</h1>
+    <p class="page-header__sub">ゲームをクリアするたびに、本物の学力が身につく。楽しみながら成長しよう。</p>
+  </div>
+</header>
+
+<!-- ===== GAMES DETAIL ===== -->
+<section class="section">
+  <div class="container">
+
+    <!-- KANJI WAR -->
+    <article id="kanji-war" style="margin-bottom:80px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center" class="about__grid">
+        <div data-reveal="left">
+          <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)">
+            <img src="assets/kanji_war.webp" alt="漢字大戦 KANJI WAR" style="width:100%;display:block">
+          </div>
+        </div>
+        <div data-reveal="right">
+          <span class="card__badge" style="display:inline-block;margin-bottom:1rem">Game</span>
+          <p class="section-label">国語 / 漢字</p>
+          <h2 class="section-title">漢字大戦<br>KANJI WAR</h2>
+          <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1rem">墨に歪められし文字の世界へ。漢字の読み書きをバトル形式で楽しく習得できる本格的な学習ゲームです。敵を倒しながら漢字の知識を深めよう。</p>
+          <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1.5rem">中学校で習う漢字を中心に、読み・書き・意味を総合的に学習できます。バトルシステムで緊張感を持ちながら取り組めるため、自然と集中力も養われます。</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.5rem">
+            <span class="about__meta-item">対象: 中学生〜</span>
+            <span class="about__meta-item">プレイ時間: 10〜30分</span>
+            <span class="about__meta-item">登録: 不要</span>
+            <span class="about__meta-item">v1.0</span>
+          </div>
+          <a href="https://hourai-carrot.github.io/KANJI-WAR/" target="_blank" rel="noopener" class="btn-primary">
+            今すぐプレイ
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <hr style="border:none;border-top:1px solid var(--gray-200);margin-bottom:80px">
+
+    <!-- LEAP OVER QUEST -->
+    <article id="leap-over-quest" style="margin-bottom:80px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center" class="about__grid">
+        <div data-reveal="right" style="order:2">
+          <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)">
+            <img src="assets/leap_over_quest.webp" alt="LEAP OVER QUEST" style="width:100%;display:block">
+          </div>
+        </div>
+        <div data-reveal="left" style="order:1">
+          <span class="card__badge" style="display:inline-block;margin-bottom:1rem">Game</span>
+          <p class="section-label">英語 / 英単語</p>
+          <h2 class="section-title">LEAP OVER<br>QUEST</h2>
+          <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1rem">RPG形式で英単語を習得。初級〜絶望まで5段階のクエストで、楽しみながら英語力を鍛えよう。正解を重ねてSPゲージを溜め、強力な必殺技を発動！</p>
+          <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1.5rem">単語の意味・穴埋め・例文英訳など多彩な問題形式で、実践的な英語力が身につきます。PvPモードで友達と対戦することも可能。</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.5rem">
+            <span class="about__meta-item">対象: 中学生〜高校生</span>
+            <span class="about__meta-item">プレイ時間: 15〜60分</span>
+            <span class="about__meta-item">登録: 不要</span>
+            <span class="about__meta-item">v2.1</span>
+          </div>
+          <a href="https://hourai-carrot.github.io/LEAP-OVER-QUEST/" target="_blank" rel="noopener" class="btn-primary">
+            今すぐプレイ
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <hr style="border:none;border-top:1px solid var(--gray-200);margin-bottom:80px">
+
+    <!-- PRIME STRIKER -->
+    <article id="prime-striker">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center" class="about__grid">
+        <div data-reveal="left">
+          <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)">
+            <img src="assets/prime_striker.webp" alt="Prime Striker" style="width:100%;display:block">
+          </div>
+        </div>
+        <div data-reveal="right">
+          <span class="card__badge" style="display:inline-block;margin-bottom:1rem">Game</span>
+          <p class="section-label">数学 / 素因数分解</p>
+          <h2 class="section-title">Prime<br>Striker</h2>
+          <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1rem">素因数分解でオンライン対戦！数学の力を武器にリアルタイムバトルを楽しもう。Googleアカウントでログインするとオンライン対戦が可能。</p>
+          <p style="color:var(--gray-600);line-height:1.8;margin-bottom:1.5rem">ゲストとしてもプレイ可能。素因数分解の速さと正確さを競い合うことで、自然と計算力が鍛えられます。</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1.5rem">
+            <span class="about__meta-item">対象: 中学生〜高校生</span>
+            <span class="about__meta-item">プレイ時間: 5〜20分</span>
+            <span class="about__meta-item">Googleログイン対応</span>
+            <span class="about__meta-item">v1.3</span>
+          </div>
+          <a href="https://beeeeach.github.io/Prime-Striker/" target="_blank" rel="noopener" class="btn-primary">
+            今すぐプレイ
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__feedback" data-reveal>
+      <h3>バグ報告・改善提案・ご要望</h3>
+      <p>気になった点や「こんな機能が欲しい！」という声をお聞かせください。</p>
+      <form id="feedback-form" novalidate>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-group">
+            <label for="fb-type">種類</label>
+            <select id="fb-type" name="fb-type">
+              <option value="bug">バグ報告</option>
+              <option value="improvement">改善提案</option>
+              <option value="request">機能リクエスト</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fb-site">対象サイト</label>
+            <select id="fb-site" name="fb-site">
+              <option value="kanji-war">漢字大戦</option>
+              <option value="leap-over">LEAP OVER QUEST</option>
+              <option value="prime-striker">Prime Striker</option>
+              <option value="all">全体</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fb-content">内容</label>
+          <textarea id="fb-content" name="fb-content" placeholder="詳細を教えてください..." rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">送信する</button>
+      </form>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo"><img src="assets/logo.png" alt="SancStudy"><span>SancStudy</span></a>
+        <p class="footer__tagline">学びを、もっと楽しく。もっと身近に。</p>
+      </div>
+      <div class="footer__col">
+        <h4>コンテンツ</h4>
+        <ul>
+          <li><a href="games.html">ゲーム一覧</a></li>
+          <li><a href="tools.html">ツール一覧</a></li>
+          <li><a href="news.html">更新情報</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>SancStudy</h4>
+        <ul>
+          <li><a href="howto.html">使い方</a></li>
+          <li><a href="about.html">運営について</a></li>
+          <li><a href="index.html#reviews">レビュー</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2025–2026 SancStudy. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
