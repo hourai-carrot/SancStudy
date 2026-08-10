@@ -357,6 +357,39 @@ function initSmoothScroll() {
   });
 }
 
+// ── Cookie Banner ──────────────────────────────────────────
+function initCookieBanner() {
+  const COOKIE_KEY = 'sancstudy_cookie_consent';
+  if (localStorage.getItem(COOKIE_KEY)) return;
+
+  const banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.innerHTML = `
+    <div class="cookie-banner__title">Cookieの利用について</div>
+    <div class="cookie-banner__text">
+      当サイトでは、利便性向上とアクセス解析のためにCookieを使用しています。
+      詳細は<a href="privacy.html" style="color:var(--blue-mid);text-decoration:underline;">プライバシーポリシー</a>をご覧ください。
+    </div>
+    <div class="cookie-banner__actions">
+      <button class="cookie-banner__btn cookie-banner__btn--accept">同意する</button>
+      <button class="cookie-banner__btn cookie-banner__btn--settings">ブラウザ設定で無効にする方法</button>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  setTimeout(() => banner.classList.add('show'), 1000);
+
+  banner.querySelector('.cookie-banner__btn--accept').addEventListener('click', () => {
+    localStorage.setItem(COOKIE_KEY, 'true');
+    banner.classList.remove('show');
+    setTimeout(() => banner.remove(), 500);
+  });
+
+  banner.querySelector('.cookie-banner__btn--settings').addEventListener('click', () => {
+    location.href = 'privacy.html#cookie-settings';
+  });
+}
+
 // ── Init ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
@@ -369,6 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initSmoothScroll();
   renderReviews();
+  initCookieBanner();
 
   // Seed sample reviews if empty
   if (!loadReviews().length) {
