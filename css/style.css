@@ -100,14 +100,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav__logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--blue-dark);
+  gap: 8px;
 }
-.nav__logo img {
-  height: 40px;
+.nav__logo .logo-icon {
+  height: 38px;
   width: auto;
+}
+.nav__logo .logo-text {
+  height: 24px;
+  width: auto;
+  margin-top: 2px;
 }
 
 /* Hamburger (always visible) */
@@ -852,12 +854,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .footer__logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: var(--white);
-  font-weight: 700;
-  font-size: 1.1rem;
+  gap: 8px;
 }
-.footer__logo img { height: 36px; filter: brightness(0) invert(1); }
+.footer__logo .logo-icon {
+  height: 32px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+.footer__logo .logo-text {
+  height: 20px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
 .footer__tagline { font-size: .88rem; line-height: 1.7; }
 .footer__col h4 {
   color: var(--white);

@@ -262,19 +262,45 @@ function initFeedbackForm() {
   const form = $('#feedback-form');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
     const type    = form.querySelector('[name="fb-type"]').value;
+    const site    = form.querySelector('[name="fb-site"]').value;
     const content = form.querySelector('[name="fb-content"]').value.trim();
+    
     if (!content) { showToast('内容を入力してください', 'error'); return; }
 
-    // Store locally (in real deployment, send to backend)
-    const feedbacks = JSON.parse(localStorage.getItem('sancstudy_feedback') || '[]');
-    feedbacks.push({ type, content, date: new Date().toISOString() });
-    localStorage.setItem('sancstudy_feedback', JSON.stringify(feedbacks));
+    btn.disabled = true;
+    btn.textContent = '送信中...';
 
-    form.reset();
-    showToast('フィードバックを送信しました！ありがとうございます', 'success');
+    // --- 実装案: Formspree を使用する場合 ---
+    // const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID";
+    // try {
+    //   const response = await fetch(FORMSPREE_URL, {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ type, site, content })
+    //   });
+    //   if (response.ok) {
+    //     showToast('送信完了！管理者へ通知されました', 'success');
+    //     form.reset();
+    //   } else { throw new Error(); }
+    // } catch (err) {
+    //   showToast('送信に失敗しました。後ほどお試しください', 'error');
+    // }
+
+    // 現在はデモ用に localStorage に保存
+    const feedbacks = JSON.parse(localStorage.getItem('sancstudy_feedback') || '[]');
+    feedbacks.push({ type, site, content, date: new Date().toISOString() });
+    localStorage.setItem('sancstudy_feedback', JSON.stringify(feedbacks));
+    
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = '送信する';
+      form.reset();
+      showToast('フィードバックを送信しました（デモ）', 'success');
+    }, 800);
   });
 }
 
