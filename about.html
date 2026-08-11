@@ -195,37 +195,14 @@
 
 <footer class="footer">
   <div class="container">
-    <div class="footer__feedback" data-reveal>
+    <!-- Feedback Button -->
+    <div class="footer__feedback" data-reveal style="text-align: center;">
       <h3>バグ報告・改善提案・ご要望</h3>
-      <p>気になった点や「こんな機能が欲しい！」という声をお聞かせください。</p>
-      <form id="feedback-form" novalidate>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-          <div class="form-group">
-            <label for="fb-type">種類</label>
-            <select id="fb-type" name="fb-type">
-              <option value="bug">バグ報告</option>
-              <option value="improvement">改善提案</option>
-              <option value="request">機能リクエスト</option>
-              <option value="other">その他</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="fb-site">対象サイト</label>
-            <select id="fb-site" name="fb-site">
-              <option value="all">全体</option>
-              <option value="kanji-war">漢字大戦</option>
-              <option value="leap-over">LEAP OVER QUEST</option>
-              <option value="prime-striker">Prime Striker</option>
-              <option value="homework">宿題マネージャー</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="fb-content">内容</label>
-          <textarea id="fb-content" name="fb-content" placeholder="詳細を教えてください..." rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary">送信する</button>
-      </form>
+      <p style="margin-bottom: 24px;">気になった点や「こんな機能が欲しい！」という声をお聞かせください。<br>みなさんのフィードバックがサービス改善につながります。</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSexf_6UlmAfIpSYAt5qz-eD0GVDG0aXGCcMAX6b82G0-uZKJw/viewform?usp=dialog" target="_blank" rel="noopener" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>フィードバックを送る</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      </a>
     </div>
     <div class="footer__grid">
       <div class="footer__brand">
