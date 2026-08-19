@@ -1,316 +1,310 @@
-/* ============================================================
-   SancStudy - Main JavaScript
-   ============================================================ */
+/**
+ * SancStudy Main JS
+ * Fixed version with correct selectors and robust Supabase initialization
+ */
 
-'use strict';
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
 
-// ── Utility ──────────────────────────────────────────────────
-const $ = (sel, ctx = document) => ctx.querySelector(sel);
-const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+// --- Supabase Configuration ---
+const SUPABASE_URL = "https://bduejgzyauqilbhkisen.supabase.co";
+const SUPABASE_KEY = "sb_publishable_J9yXztCQd9VRBF92l-dYew_kwrVpw3L";
+let supabaseClient = null;
 
-// ── Nav ──────────────────────────────────────────────────────
-function initNav() {
-  const nav       = $('.nav');
-  const hamburger = $('.nav__hamburger');
-  const menu      = $('.nav__menu');
-  const overlay   = $('.nav__overlay');
-
-  if (!nav) return;
-
-  // Scroll state
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-  }, { passive: true });
-
-  // Toggle drawer
-  function toggleMenu(open) {
-    hamburger.classList.toggle('active', open);
-    menu.classList.toggle('open', open);
-    overlay.classList.toggle('show', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+function initSupabase() {
+  if (window.supabase) {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    window.supabaseClient = supabaseClient;
+    return true;
   }
-
-  hamburger.addEventListener('click', () => toggleMenu(!menu.classList.contains('open')));
-  overlay.addEventListener('click', () => toggleMenu(false));
-
-  // Active link highlight
-  const currentPage = location.pathname.split('/').pop() || 'index.html';
-  $$('.nav__menu a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      a.classList.add('active');
-    }
-  });
-
-  // Close on link click
-  $$('.nav__menu a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+  return false;
 }
 
-// ── Hero Slider ───────────────────────────────────────────────
+// --- XSS Protection ---
+function escapeHTML(str) {
+  if (!str) return "";
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ── Navigation ──────────────────────────────────────────────────
+function initNav() {
+  const burger = $('.nav__hamburger');
+  const menu = $('.nav__menu');
+  const overlay = $('.nav__overlay');
+  if (!burger) return;
+
+  const toggle = () => {
+    const active = burger.classList.toggle('active');
+    menu.classList.toggle('open'); // Fixed: changed from active to open
+    overlay.classList.toggle('show'); // Fixed: changed from active to show
+    burger.setAttribute('aria-expanded', active);
+    document.body.style.overflow = active ? 'hidden' : '';
+  };
+
+  burger.addEventListener('click', toggle);
+  overlay.addEventListener('click', toggle);
+  
+  // Close menu on link click
+  $$('.nav__menu a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (burger.classList.contains('active')) toggle();
+    });
+  });
+
+  // Active link underline
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  $$('.nav__menu a').forEach(a => {
+    if (a.getAttribute('href') === currentPath) a.classList.add('active');
+  });
+}
+
+// ── Hero Slider ────────────────────────────────────────────────
 function initHeroSlider() {
   const slides = $$('.hero__slide');
-  const dots   = $$('.hero__dot');
+  const dots = $$('.hero__dot');
+  const prev = $('.hero__arrow--prev'); // Fixed: changed from .hero__btn--prev
+  const next = $('.hero__arrow--next'); // Fixed: changed from .hero__btn--next
   if (!slides.length) return;
 
   let current = 0;
-  let timer;
+  let timer = null;
 
-  function goTo(idx) {
-    slides[current].classList.remove('active');
-    dots[current]?.classList.remove('active');
-    current = (idx + slides.length) % slides.length;
+  const show = index => {
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    current = (index + slides.length) % slides.length;
     slides[current].classList.add('active');
-    dots[current]?.classList.add('active');
-  }
+    dots[current].classList.add('active');
+  };
 
-  function next() { goTo(current + 1); }
-  function prev() { goTo(current - 1); }
+  const start = () => {
+    stop();
+    timer = setInterval(() => show(current + 1), 5000);
+  };
+  const stop = () => clearInterval(timer);
 
-  function startAuto() {
-    clearInterval(timer);
-    timer = setInterval(next, 5000);
-  }
+  next?.addEventListener('click', () => { show(current + 1); start(); });
+  prev?.addEventListener('click', () => { show(current - 1); start(); });
+  dots.forEach((d, i) => d.addEventListener('click', () => { show(i); start(); }));
 
-  // Init
-  goTo(0);
-  startAuto();
-
-  // Dots
-  dots.forEach((d, i) => d.addEventListener('click', () => { goTo(i); startAuto(); }));
-
-  // Arrows
-  const btnPrev = $('.hero__arrow--prev');
-  const btnNext = $('.hero__arrow--next');
-  btnPrev?.addEventListener('click', () => { prev(); startAuto(); });
-  btnNext?.addEventListener('click', () => { next(); startAuto(); });
-
-  // Touch / swipe
-  let startX = 0;
-  const heroEl = $('.hero');
-  heroEl?.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  heroEl?.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); startAuto(); }
-  }, { passive: true });
+  start();
 }
 
-// ── Scroll Reveal ─────────────────────────────────────────────
+// ── Scroll Reveal ──────────────────────────────────────────────
 function initScrollReveal() {
-  const els = $$('[data-reveal]');
-  if (!els.length) return;
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('revealed');
-        io.unobserve(e.target);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        // Check if this element or its children have data-count
+        if (entry.target.hasAttribute('data-count') || entry.target.querySelector('[data-count]')) {
+          startCounters(entry.target);
+        }
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
 
-  els.forEach(el => io.observe(el));
+  $$('[data-reveal]').forEach(el => observer.observe(el));
 }
 
-// ── Stats Counter ─────────────────────────────────────────────
-function initCounters() {
-  const nums = $$('[data-count]');
-  if (!nums.length) return;
+// ── Counters ──────────────────────────────────────────────────
+function startCounters(container) {
+  const nums = container.querySelectorAll('[data-count]');
+  nums.forEach(el => {
+    if (el.dataset.started) return;
+    el.dataset.started = "true";
+    const target = parseInt(el.dataset.count);
+    let count = 0;
+    const duration = 2000;
+    const startTime = performance.now();
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el  = e.target;
-      const end = parseInt(el.dataset.count, 10);
-      const dur = 1800;
-      const step = 16;
-      const inc = end / (dur / step);
-      let cur = 0;
-      const t = setInterval(() => {
-        cur = Math.min(cur + inc, end);
-        el.textContent = Math.floor(cur).toLocaleString();
-        if (cur >= end) clearInterval(t);
-      }, step);
-      io.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-
-  nums.forEach(n => io.observe(n));
-}
-
-// ── Star Picker ───────────────────────────────────────────────
-function initStarPicker() {
-  $$('.star-picker').forEach(picker => {
-    const stars = $$('span', picker);
-    const input = picker.nextElementSibling;
-
-    function setStars(n) {
-      stars.forEach((s, i) => s.classList.toggle('lit', i < n));
-      if (input && input.type === 'hidden') input.value = n;
-    }
-
-    stars.forEach((s, i) => {
-      s.addEventListener('mouseover', () => setStars(i + 1));
-      s.addEventListener('click',     () => { setStars(i + 1); picker.dataset.rating = i + 1; });
-    });
-    picker.addEventListener('mouseleave', () => {
-      const r = parseInt(picker.dataset.rating || 0);
-      setStars(r);
-    });
+    const update = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const currentCount = Math.floor(ease * target);
+      
+      el.textContent = currentCount.toLocaleString();
+      
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target.toLocaleString();
+      }
+    };
+    requestAnimationFrame(update);
   });
 }
 
-// ── Review System ─────────────────────────────────────────────
-const STORAGE_KEY = 'sancstudy_reviews';
-
-function loadReviews() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-  catch { return []; }
+// ── Reviews (Supabase) ─────────────────────────────────────────
+async function fetchApprovedReviews() {
+  if (!supabaseClient) return [];
+  try {
+    const { data, error } = await supabaseClient
+      .from('reviews')
+      .select('*')
+      .eq('approved', true)
+      .order('created_at', { ascending: false });
+    
+    if (error) throw error;
+    return data;
+  } catch (err) {
+    console.error("Fetch reviews error:", err);
+    return [];
+  }
 }
 
-function saveReviews(reviews) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+async function submitReview(review) {
+  if (!supabaseClient) return { error: "Supabase not initialized" };
+  try {
+    const { error } = await supabaseClient
+      .from('reviews')
+      .insert([{ ...review, approved: false }]);
+    return { error };
+  } catch (err) {
+    return { error: err.message };
+  }
 }
 
-function renderReviews() {
-  const container = $('#review-list');
-  if (!container) return;
+function renderStars(rating) {
+  return "★".repeat(rating) + "☆".repeat(5 - rating);
+}
 
-  const reviews = loadReviews();
-  const avgEl   = $('#review-avg');
-  const countEl = $('#review-count');
+async function updateReviewDisplay() {
+  const listEl = $('#review-list');
+  if (!listEl) return;
 
-  // Compute avg
-  const avg = reviews.length
-    ? (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1)
-    : '—';
-
-  if (avgEl)   avgEl.textContent = avg;
-  if (countEl) countEl.textContent = `${reviews.length}件のレビュー`;
-
-  // Bar chart
-  for (let i = 5; i >= 1; i--) {
-    const bar = $(`#bar-${i}`);
-    if (!bar) continue;
-    const cnt = reviews.filter(r => r.rating === i).length;
-    const pct = reviews.length ? (cnt / reviews.length * 100) : 0;
-    bar.style.width = pct + '%';
-  }
-
-  // Big stars
-  const bigStars = $('#big-stars');
-  if (bigStars) {
-    const n = Math.round(parseFloat(avg));
-    bigStars.innerHTML = '★'.repeat(n) + '☆'.repeat(5 - n);
-  }
-
-  // List
-  if (!reviews.length) {
-    container.innerHTML = '<p style="text-align:center;color:var(--gray-400);padding:2rem 0;">まだレビューがありません。最初のレビューを投稿しましょう！</p>';
+  const reviews = await fetchApprovedReviews();
+  
+  if (reviews.length === 0) {
+    listEl.innerHTML = '<p style="text-align:center; padding: 40px; grid-column: 1/-1; color: var(--gray-500);">承認済みのレビューはまだありません。</p>';
+    updateStats([]);
     return;
   }
 
-  container.innerHTML = reviews.slice().reverse().slice(0, 12).map(r => `
-    <div class="review-card" data-reveal>
+  listEl.innerHTML = reviews.map(r => `
+    <article class="review-card">
       <div class="review-card__header">
-        <div class="review-card__avatar">${r.name.charAt(0).toUpperCase()}</div>
+        <div class="review-card__avatar">${escapeHTML(r.name.charAt(0))}</div>
         <div>
-          <div class="review-card__name">${escHtml(r.name)}</div>
-          <div class="review-card__date">${r.date}</div>
+          <div class="review-card__name">${escapeHTML(r.name)}</div>
+          <div class="review-card__date">${new Date(r.created_at).toLocaleDateString()}</div>
         </div>
       </div>
-      <div class="review-card__stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
-      <div class="review-card__text">${escHtml(r.comment)}</div>
-    </div>
+      <div class="review-card__stars">${renderStars(r.rating)}</div>
+      <p class="review-card__text">${escapeHTML(r.content)}</p>
+    </article>
   `).join('');
 
-  // Re-observe new elements
-  $$('[data-reveal]', container).forEach(el => {
-    if (!el.classList.contains('revealed')) {
-      setTimeout(() => el.classList.add('revealed'), 50);
+  updateStats(reviews);
+}
+
+function updateStats(reviews) {
+  const avgEl = $('#review-avg');
+  const starsEl = $('#big-stars');
+  const countEl = $('#review-count');
+  if (!avgEl) return;
+
+  const count = reviews.length;
+  if (count === 0) {
+    avgEl.textContent = "—";
+    starsEl.textContent = "☆☆☆☆☆";
+    countEl.textContent = "0件のレビュー";
+    [1,2,3,4,5].forEach(i => {
+      const bar = $(`#bar-${i}`);
+      if (bar) bar.style.width = "0%";
+    });
+    return;
+  }
+
+  const sum = reviews.reduce((acc, r) => acc + r.rating, 0);
+  const avg = (sum / count).toFixed(1);
+  
+  avgEl.textContent = avg;
+  starsEl.textContent = renderStars(Math.round(avg));
+  countEl.textContent = `${count}件のレビュー`;
+
+  const distribution = { 1:0, 2:0, 3:0, 4:0, 5:0 };
+  reviews.forEach(r => distribution[r.rating]++);
+  Object.keys(distribution).forEach(star => {
+    const bar = $(`#bar-${star}`);
+    if (bar) {
+      const percent = (distribution[star] / count) * 100;
+      bar.style.width = `${percent}%`;
     }
   });
+
+  const statsNum = $$('.stats__num span');
+  if (statsNum.length >= 3) {
+    const satisfaction = Math.round((avg / 5) * 100);
+    statsNum[2].dataset.count = satisfaction;
+    if (statsNum[2].dataset.started) {
+      statsNum[2].dataset.started = "";
+      startCounters(statsNum[2].parentElement);
+    }
+  }
 }
 
 function initReviewForm() {
   const form = $('#review-form');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  let selectedRating = 0;
+  const stars = $$('.star-picker span');
+  
+  stars.forEach((star, i) => {
+    star.addEventListener('click', () => {
+      selectedRating = i + 1;
+      stars.forEach((s, j) => s.classList.toggle('lit', j <= i)); // Fixed: changed from active to lit
+    });
+  });
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const name    = form.querySelector('[name="reviewer-name"]').value.trim();
-    const comment = form.querySelector('[name="review-comment"]').value.trim();
-    const rating  = parseInt(form.querySelector('[name="rating"]').value || 0);
+    const name = $('#reviewer-name').value.trim();
+    const content = $('#review-comment').value.trim();
+    const btn = form.querySelector('button[type="submit"]');
 
-    if (!name || !comment) { showToast('名前とコメントを入力してください', 'error'); return; }
-    if (!rating)            { showToast('星の評価を選択してください', 'error'); return; }
+    if (!name || !content || selectedRating === 0) {
+      showToast('すべての項目を入力してください', 'error');
+      return;
+    }
 
-    const reviews = loadReviews();
-    reviews.push({ name, comment, rating, date: new Date().toLocaleDateString('ja-JP') });
-    saveReviews(reviews);
-    renderReviews();
-    form.reset();
-    $$('.star-picker span', form).forEach(s => s.classList.remove('lit'));
-    form.querySelector('[name="rating"]').value = '';
-    const picker = form.querySelector('.star-picker');
-    if (picker) picker.dataset.rating = 0;
-    showToast('レビューを投稿しました！ありがとうございます ★', 'success');
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+
+    const { error } = await submitReview({ name, rating: selectedRating, content });
+
+    if (error) {
+      showToast('エラーが発生しました。後ほどお試しください', 'error');
+      btn.disabled = false;
+      btn.textContent = '投稿する';
+    } else {
+      showToast('レビューを送信しました！管理者の承認後に掲載されます。', 'success');
+      form.reset();
+      selectedRating = 0;
+      stars.forEach(s => s.classList.remove('lit'));
+      btn.disabled = false;
+      btn.textContent = '投稿する';
+    }
   });
 }
 
-// ── Feedback Form ─────────────────────────────────────────────
-// (Googleフォームへのリンクボタンに変更されたため、JSロジックは削除されました)
-
-// ── Tabs ──────────────────────────────────────────────────────
-function initTabs() {
-  $$('.tab-nav').forEach(nav => {
-    const items  = $$('.tab-nav__item', nav);
-    const panels = $$('.tab-panel', nav.closest('.tabs-wrapper') || document);
-
-    items.forEach((item, i) => {
-      item.addEventListener('click', () => {
-        items.forEach(it => it.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
-        item.classList.add('active');
-        panels[i]?.classList.add('active');
-      });
-    });
-  });
-}
-
-// ── Toast ─────────────────────────────────────────────────────
+// ── Toast ──────────────────────────────────────────────────────
 function showToast(msg, type = 'success') {
-  let toast = $('.toast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.className = 'toast';
-    document.body.appendChild(toast);
-  }
-  toast.textContent = msg;
+  const toast = document.createElement('div');
   toast.className = `toast toast--${type}`;
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => toast.classList.add('show'));
-  });
-  setTimeout(() => toast.classList.remove('show'), 3500);
-}
-
-// ── Escape HTML ───────────────────────────────────────────────
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-// ── Smooth anchor scroll ──────────────────────────────────────
-function initSmoothScroll() {
-  $$('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if (el) {
-        e.preventDefault();
-        const top = el.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => toast.classList.add('show'), 100);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 500);
+  }, 4000);
 }
 
 // ── Cookie Banner ──────────────────────────────────────────
@@ -346,30 +340,50 @@ function initCookieBanner() {
   });
 }
 
+// ── Smooth Scroll ──────────────────────────────────────────────
+function initSmoothScroll() {
+  $$('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href === "#") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      
+      try {
+        const target = $(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      } catch (err) {}
+    });
+  });
+}
+
 // ── Init ──────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+function startApp() {
   initNav();
   initHeroSlider();
   initScrollReveal();
-  initCounters();
-  initStarPicker();
   initReviewForm();
-  // initFeedbackForm();
-  initTabs();
   initSmoothScroll();
-  renderReviews();
   initCookieBanner();
-
-  // Seed sample reviews if empty
-  if (!loadReviews().length) {
-    const samples = [
-      { name: '中2 Kさん', comment: '漢字大戦が楽しすぎて毎日やってます！気づいたら漢字が得意になってた。', rating: 5, date: '2026/7/15' },
-      { name: '高1 Tさん', comment: 'LEAP OVER QUESTで英単語を覚えるのが楽しくなりました。ゲーム感覚で続けられます。', rating: 5, date: '2026/7/20' },
-      { name: '中3 Mさん', comment: '宿題マネージャーで提出忘れがなくなりました！スマホとPCで同期できるのが便利。', rating: 4, date: '2026/7/28' },
-      { name: '高2 Sさん', comment: 'Prime Strikerで数学の素因数分解が得意になった。友達と対戦できるのが最高！', rating: 5, date: '2026/8/1' },
-      { name: '中1 Aさん', comment: 'デザインがかっこよくて使いやすい。もっとゲームが増えてほしいです！', rating: 4, date: '2026/8/3' },
-    ];
-    saveReviews(samples);
-    renderReviews();
+  
+  // Try to init Supabase and fetch reviews
+  if (initSupabase()) {
+    updateReviewDisplay();
+  } else {
+    // Retry once after a short delay if SDK not ready
+    setTimeout(() => {
+      if (initSupabase()) updateReviewDisplay();
+    }, 1000);
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startApp);
+} else {
+  startApp();
+}

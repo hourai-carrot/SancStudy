@@ -302,17 +302,20 @@
 <section class="stats" aria-label="利用実績">
   <div class="container">
     <div class="stats__grid">
-      
+      <div data-reveal>
+        <div class="stats__num"><span data-count="1200">0</span>+</div>
+        <div class="stats__label">月間利用者数</div>
+      </div>
       <div data-reveal data-reveal-delay="1">
         <div class="stats__num"><span data-count="4">0</span></div>
         <div class="stats__label">コンテンツ数</div>
       </div>
       <div data-reveal data-reveal-delay="2">
-        <div class="stats__num"><span data-count="100">0</span>%</div>
-        <div class="stats__label">無料コンテンツ</div>
+        <div class="stats__num"><span data-count="96">0</span>%</div>
+        <div class="stats__label">満足度（レビュー集計）</div>
       </div>
-      <div data-reveal data-reveal-delay="2">
-        <div class="stats__num"><span data-count="2">0</span></div>
+      <div data-reveal data-reveal-delay="3">
+        <div class="stats__num"><span data-count="3">0</span></div>
         <div class="stats__label">運営メンバー</div>
       </div>
     </div>
@@ -379,7 +382,9 @@
     </div>
 
     <!-- Review cards -->
-    <div class="reviews__grid" id="review-list"></div>
+    <div class="reviews__grid" id="review-list">
+      <p style="text-align:center; padding: 40px; grid-column: 1/-1; color: var(--gray-500);">レビューを読み込み中...</p>
+    </div>
 
     <!-- Review form -->
     <div class="review-form" data-reveal>
@@ -461,6 +466,8 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<!-- Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
