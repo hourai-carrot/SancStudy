@@ -89,6 +89,8 @@ function initHeroSlider() {
   prev?.addEventListener('click', () => { show(current - 1); start(); });
   dots.forEach((d, i) => d.addEventListener('click', () => { show(i); start(); }));
 
+  // Initialize first slide immediately
+  show(0);
   start();
 }
 
