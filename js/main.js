@@ -62,14 +62,17 @@ function initNav() {
 
 // ── Hero Slider ────────────────────────────────────────────────
 function initHeroSlider() {
+  const hero = $('.hero');
   const slides = $$('.hero__slide');
   const dots = $$('.hero__dot');
-  const prev = $('.hero__arrow--prev'); // Fixed: changed from .hero__btn--prev
-  const next = $('.hero__arrow--next'); // Fixed: changed from .hero__btn--next
+  const prev = $('.hero__arrow--prev');
+  const next = $('.hero__arrow--next');
   if (!slides.length) return;
 
   let current = 0;
   let timer = null;
+  let touchStartX = 0;
+  let touchEndX = 0;
 
   const show = index => {
     slides.forEach(s => s.classList.remove('active'));
@@ -88,6 +91,29 @@ function initHeroSlider() {
   next?.addEventListener('click', () => { show(current + 1); start(); });
   prev?.addEventListener('click', () => { show(current - 1); start(); });
   dots.forEach((d, i) => d.addEventListener('click', () => { show(i); start(); }));
+
+  // Touch Support
+  hero?.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  hero?.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  const handleSwipe = () => {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        show(current + 1); // Swipe Left -> Next
+      } else {
+        show(current - 1); // Swipe Right -> Prev
+      }
+      start();
+    }
+  };
 
   // Initialize first slide immediately
   show(0);
