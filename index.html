@@ -306,10 +306,6 @@
 <section class="stats" aria-label="利用実績">
   <div class="container">
     <div class="stats__grid">
-      <div data-reveal>
-        <div class="stats__num"><span data-count="1200">0</span>+</div>
-        <div class="stats__label">月間利用者数</div>
-      </div>
       <div data-reveal data-reveal-delay="1">
         <div class="stats__num"><span id="stat-content-count" data-count="0">0</span></div>
         <div class="stats__label">コンテンツ数</div>
@@ -322,6 +318,21 @@
         <div class="stats__num"><span id="stat-member-count" data-count="0">0</span></div>
         <div class="stats__label">運営メンバー</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LATEST ARTICLES ===== -->
+<section class="section section--gray" id="latest-articles" aria-labelledby="latest-articles-heading">
+  <div class="container">
+    <p class="section-label">Articles</p>
+    <h2 id="latest-articles-heading" class="section-title" data-reveal>最新の記事</h2>
+    <p class="section-subtitle" data-reveal>学びをもっと楽しく、もっと身近にするヒントをお届けします。</p>
+    <div class="article-grid" id="latest-articles-list" aria-live="polite">
+      <p class="dynamic-state dynamic-state--loading">最新の記事を読み込んでいます…</p>
+    </div>
+    <div class="text-center mt-3" data-reveal>
+      <a href="articles.html" class="btn-outline">すべての記事を見る</a>
     </div>
   </div>
 </section>

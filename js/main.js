@@ -95,20 +95,30 @@ function setError(element, message = '情報を読み込めませんでした。
 }
 
 function createAvatar(member, className = 'member-avatar') {
-  const root = createElement('span', className);
+  // Every avatar keeps the shared class so its size and image fitting remain
+  // consistent across creator chips, team cards, and profile headers.
+  const root = createElement('span', `${className} member-avatar`);
   root.setAttribute('aria-hidden', 'true');
-  root.textContent = text(member?.name).trim().slice(0, 1).toUpperCase() || 'S';
+  const fallback = text(member?.name).trim().slice(0, 1).toUpperCase() || 'S';
+  root.textContent = fallback;
 
   if (isSafeHttpsUrl(member?.avatar_url)) {
     const image = document.createElement('img');
-    image.src = member.avatar_url;
     image.alt = '';
-    image.loading = 'lazy';
+    // Do not wait for a detached lazy image. Keeping the image in the DOM
+    // lets mobile browsers start the request; the fallback stays visible
+    // until the image finishes loading successfully.
+    image.loading = 'eager';
+    image.decoding = 'async';
     image.referrerPolicy = 'no-referrer';
+    image.style.opacity = '0';
     image.addEventListener('load', () => {
-      root.textContent = '';
-      root.append(image);
+      image.style.opacity = '';
+      root.replaceChildren(image);
     }, { once: true });
+    image.addEventListener('error', () => image.remove(), { once: true });
+    root.append(image);
+    image.src = member.avatar_url;
   }
   return root;
 }
@@ -170,6 +180,11 @@ function initNav() {
 
   burger.addEventListener('click', toggle);
   overlay.addEventListener('click', close);
+  // The drawer can be dismissed by tapping anywhere outside it, not only the × button.
+  document.addEventListener('pointerdown', (event) => {
+    if (!burger.classList.contains('active')) return;
+    if (!menu.contains(event.target) && !burger.contains(event.target)) close();
+  });
   $$('.nav__menu a').forEach((link) => link.addEventListener('click', close));
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && burger.classList.contains('active')) close();
@@ -723,6 +738,21 @@ function renderArticlesPage(data) {
   data.articles.forEach((article) => list.append(createArticleCard(article, data)));
 }
 
+function renderLatestArticles(data) {
+  const list = $('#latest-articles-list');
+  if (!list) return;
+  if (data.errors.articles) {
+    setError(list, '最新の記事を読み込めませんでした。');
+    return;
+  }
+  if (!data.articles.length) {
+    setEmpty(list, '公開中の記事はまだありません。');
+    return;
+  }
+  clearElement(list);
+  data.articles.slice(0, 3).forEach((article) => list.append(createArticleCard(article, data)));
+}
+
 function createProfileContentCard(item) {
   const card = createElement('a', 'profile-content-card');
   card.href = item.destination_url;
@@ -938,6 +968,7 @@ async function initDynamicContent() {
     renderAboutPage(data);
     renderNewsPage(data);
     renderArticlesPage(data);
+    renderLatestArticles(data);
     renderProfilePage(data);
     await renderArticlePage(data);
   } catch (error) {
