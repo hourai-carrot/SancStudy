@@ -4,196 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>更新情報 | SancStudy</title>
-  <meta name="description" content="SancStudyの最新更新情報。各ゲーム・ツールのアップデート履歴をご確認ください。">
+  <meta name="description" content="SancStudyのゲーム・ツール・サイトに関する最新の更新情報をご確認いただけます。">
+  <link rel="canonical" href="https://hourai-carrot.github.io/SancStudy/news.html">
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<nav class="nav">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">
-      <img src="assets/logo.png" alt="SancStudy アイコン" class="logo-icon">
-      <img src="assets/logo_text.png" alt="SancStudy" class="logo-text">
-    </a>
-    <button class="nav__hamburger" aria-label="メニューを開く"><span></span><span></span><span></span></button>
-  </div>
-  <div class="nav__overlay"></div>
-  <div class="nav__menu">
-    <ul>
-      <li><a href="index.html">ホーム</a></li>
-      <li><a href="games.html">ゲーム</a></li>
-      <li><a href="tools.html">ツール</a></li>
-      <li><a href="howto.html">使い方</a></li>
-      <li><a href="about.html">運営について</a></li>
-      <li><a href="news.html">更新情報</a></li>
-    </ul>
-  </div>
-</nav>
-
-<header class="page-header">
-  <div class="container">
-    <p class="section-label" style="color:rgba(255,255,255,.7)">News</p>
-    <h1 class="page-header__title">更新情報</h1>
-    <p class="page-header__sub">各コンテンツの最新アップデート情報をお届けします。</p>
-  </div>
-</header>
-
-<section class="section">
-  <div class="container" style="max-width:800px">
-
-    <!-- Filter tabs -->
-    <div class="tabs-wrapper">
-      <div class="tab-nav">
-        <button class="tab-nav__item active" data-tab="all">すべて</button>
-        <button class="tab-nav__item" data-tab="game">ゲーム</button>
-        <button class="tab-nav__item" data-tab="tool">ツール</button>
-        <button class="tab-nav__item" data-tab="site">サイト</button>
-      </div>
-    </div>
-
-    <div class="news-list" id="news-list">
-
-      <div class="news-item" data-category="site" data-reveal>
-        <span class="news-item__date">2026/08/07</span>
-        <span class="news-item__badge news-item__badge--site">サイト</span>
-        <span class="news-item__text">SancStudyポータルサイトをリニューアル。レビュー機能・フィードバックフォーム・更新情報ページを追加しました。</span>
-      </div>
-
-      <div class="news-item" data-category="tool" data-reveal>
-        <span class="news-item__date">2026/08/01</span>
-        <span class="news-item__badge news-item__badge--tool">ツール</span>
-        <span class="news-item__text">宿題マネージャー v1.5 リリース。UIを改善し、宿題の並び替え機能を追加しました。</span>
-      </div>
-
-      <div class="news-item" data-category="game" data-reveal>
-        <span class="news-item__date">2026/07/25</span>
-        <span class="news-item__badge news-item__badge--game">ゲーム</span>
-        <span class="news-item__text">LEAP OVER QUEST v2.1 リリース。新クエスト「荒涼たる荒野」の問題を50問追加。PvPモードのバグを修正しました。</span>
-      </div>
-
-      <div class="news-item" data-category="game" data-reveal>
-        <span class="news-item__date">2026/07/18</span>
-        <span class="news-item__badge news-item__badge--game">ゲーム</span>
-        <span class="news-item__text">Prime Striker v1.3 リリース。オンライン対戦のマッチング速度を改善。スコアランキング機能を追加しました。</span>
-      </div>
-
-      <div class="news-item" data-category="game" data-reveal>
-        <span class="news-item__date">2026/07/10</span>
-        <span class="news-item__badge news-item__badge--game">ゲーム</span>
-        <span class="news-item__text">漢字大戦 v1.0 正式リリース。スマートフォン対応を強化し、タッチ操作を改善しました。</span>
-      </div>
-
-      <div class="news-item" data-category="tool" data-reveal>
-        <span class="news-item__date">2026/06/20</span>
-        <span class="news-item__badge news-item__badge--tool">ツール</span>
-        <span class="news-item__text">宿題マネージャー v1.4 リリース。複数端末同期の安定性を向上。オフライン対応を強化しました。</span>
-      </div>
-
-      <div class="news-item" data-category="game" data-reveal>
-        <span class="news-item__date">2026/06/10</span>
-        <span class="news-item__badge news-item__badge--game">ゲーム</span>
-        <span class="news-item__text">LEAP OVER QUEST v2.0 大型アップデート。ガチャシステム・装備機能を追加。難易度「絶望」クエストを実装しました。</span>
-      </div>
-
-      <div class="news-item" data-category="game" data-reveal>
-        <span class="news-item__date">2026/05/15</span>
-        <span class="news-item__badge news-item__badge--game">ゲーム</span>
-        <span class="news-item__text">Prime Striker v1.2 リリース。ゲストプレイ機能を追加。Googleログインなしでもプレイ可能になりました。</span>
-      </div>
-
-      <div class="news-item" data-category="site" data-reveal>
-        <span class="news-item__date">2026/04/01</span>
-        <span class="news-item__badge news-item__badge--site">サイト</span>
-        <span class="news-item__text">SancStudyポータルサイト 初版公開。漢字大戦・LEAP OVER QUEST・Prime Striker・宿題マネージャーの4コンテンツでスタート。</span>
-      </div>
-
-      <div class="news-item" data-category="tool" data-reveal>
-        <span class="news-item__date">2026/01/15</span>
-        <span class="news-item__badge news-item__badge--tool">ツール</span>
-        <span class="news-item__text">宿題マネージャー v1.0 リリース。Googleアカウントによるマルチデバイス同期機能を実装しました。</span>
-      </div>
-
-      <div class="news-item" data-category="game" data-reveal>
-        <span class="news-item__date">2025/07/01</span>
-        <span class="news-item__badge news-item__badge--game">ゲーム</span>
-        <span class="news-item__text">Prime Striker v1.0 リリース。素因数分解をテーマにしたオンライン対戦ゲームをリリースしました。</span>
-      </div>
-
-      <div class="news-item" data-category="game" data-reveal>
-        <span class="news-item__date">2025/04/01</span>
-        <span class="news-item__badge news-item__badge--game">ゲーム</span>
-        <span class="news-item__text">漢字大戦・LEAP OVER QUEST v1.0 リリース。SancStudy 運営開始。</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container">
-    <!-- Feedback Button -->
-    <div class="footer__feedback" data-reveal style="text-align: center;">
-      <h3>バグ報告・改善提案・ご要望</h3>
-      <p style="margin-bottom: 24px;">気になった点や「こんな機能が欲しい！」という声をお聞かせください。<br>みなさんのフィードバックがサービス改善につながります。</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSexf_6UlmAfIpSYAt5qz-eD0GVDG0aXGCcMAX6b82G0-uZKJw/viewform?usp=dialog" target="_blank" rel="noopener" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
-        <span>フィードバックを送る</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+  <nav class="nav" role="navigation" aria-label="メインナビゲーション">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="SancStudy ホーム">
+        <img src="assets/logo.png" alt="SancStudy アイコン" class="logo-icon">
+        <img src="assets/logo_text.png" alt="SancStudy" class="logo-text">
       </a>
+      <button class="nav__hamburger" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <a href="index.html" class="footer__logo">
-          <img src="assets/logo.png" alt="SancStudy アイコン" class="logo-icon">
-          <img src="assets/logo_text.png" alt="SancStudy" class="logo-text">
-        </a>
-        <p class="footer__tagline">学びを、もっと楽しく。もっと身近に。</p>
-      </div>
-      <div class="footer__col">
-        <h4>コンテンツ</h4>
-        <ul>
-          <li><a href="games.html">ゲーム一覧</a></li>
-          <li><a href="tools.html">ツール一覧</a></li>
-          <li><a href="news.html">更新情報</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h4>SancStudy</h4>
-        <ul>
-          <li><a href="howto.html">使い方</a></li>
-          <li><a href="about.html">運営について</a></li>
-          <li><a href="privacy.html">プライバシーポリシー</a></li>
-          <li><a href="index.html#reviews">レビュー</a></li>
-        </ul>
-      </div>
+    <div class="nav__overlay"></div>
+    <div class="nav__menu">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="games.html">ゲーム</a></li>
+        <li><a href="tools.html">ツール</a></li>
+        <li><a href="articles.html">記事</a></li>
+        <li><a href="howto.html">使い方</a></li>
+        <li><a href="about.html">運営について</a></li>
+        <li><a href="news.html">更新情報</a></li>
+      </ul>
     </div>
-    <div class="footer__bottom">
-      <span>© 2025–2026 SancStudy. All rights reserved.</span>
-    </div>
-  </div>
-</footer>
+  </nav>
 
-<script src="js/main.js" defer></script>
-<script>
-// News filter
-document.addEventListener('DOMContentLoaded', () => {
-  const tabBtns = document.querySelectorAll('.tab-nav__item');
-  const items   = document.querySelectorAll('.news-item');
+  <header class="page-header">
+    <div class="container">
+      <p class="section-label" style="color:rgba(255,255,255,.7)">News</p>
+      <h1 class="page-header__title">更新情報</h1>
+      <p class="page-header__sub">各コンテンツとSancStudyの最新アップデート情報をお届けします。</p>
+    </div>
+  </header>
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const cat = btn.dataset.tab;
-      items.forEach(item => {
-        const show = cat === 'all' || item.dataset.category === cat;
-        item.style.display = show ? 'flex' : 'none';
-      });
-    });
-  });
-});
-</script>
+  <main>
+    <section class="section">
+      <div class="container" style="max-width:800px">
+        <div class="tabs-wrapper" aria-label="更新情報のカテゴリ">
+          <div class="tab-nav" role="tablist" aria-label="カテゴリ">
+            <button class="tab-nav__item active" type="button" data-tab="all" role="tab" aria-selected="true">すべて</button>
+            <button class="tab-nav__item" type="button" data-tab="game" role="tab" aria-selected="false">ゲーム</button>
+            <button class="tab-nav__item" type="button" data-tab="tool" role="tab" aria-selected="false">ツール</button>
+            <button class="tab-nav__item" type="button" data-tab="site" role="tab" aria-selected="false">サイト</button>
+          </div>
+        </div>
+        <div class="news-list" id="news-list" aria-live="polite">
+          <p class="dynamic-state dynamic-state--loading">更新情報を読み込んでいます…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__feedback" data-reveal style="text-align:center">
+        <h3>バグ報告・改善提案・ご要望</h3>
+        <p style="margin-bottom:24px">気になった点や「こんな機能が欲しい！」という声をお聞かせください。<br>みなさんのフィードバックがサービス改善につながります。</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSexf_6UlmAfIpSYAt5qz-eD0GVDG0aXGCcMAX6b82G0-uZKJw/viewform?usp=dialog" target="_blank" rel="noopener" class="btn-primary">フィードバックを送る</a>
+      </div>
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo" aria-label="SancStudy ホーム"><img src="assets/logo.png" alt="SancStudy アイコン" class="logo-icon"><img src="assets/logo_text.png" alt="SancStudy" class="logo-text"></a>
+          <p class="footer__tagline">学びを、もっと楽しく。もっと身近に。</p>
+        </div>
+        <div class="footer__col"><h4>コンテンツ</h4><ul><li><a href="games.html">ゲーム一覧</a></li><li><a href="tools.html">ツール一覧</a></li><li><a href="articles.html">記事</a></li><li><a href="news.html">更新情報</a></li></ul></div>
+        <div class="footer__col"><h4>SancStudy</h4><ul><li><a href="howto.html">使い方</a></li><li><a href="about.html">運営について</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="index.html#reviews">レビュー</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><span>© 2025–2026 SancStudy. All rights reserved.</span><span>学びを、もっと楽しく。もっと身近に。</span></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

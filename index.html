@@ -9,8 +9,8 @@
   <meta property="og:title" content="SancStudy - 学びを、もっと楽しく。もっと身近に。">
   <meta property="og:description" content="中高生向け学習ゲーム・ツールポータル。楽しみながら学力アップ。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sancstudy.example.com/">
-  <link rel="canonical" href="https://sancstudy.example.com/">
+  <meta property="og:url" content="https://hourai-carrot.github.io/SancStudy/">
+  <link rel="canonical" href="https://hourai-carrot.github.io/SancStudy/">
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,11 +21,11 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "SancStudy",
-    "url": "https://sancstudy.example.com/",
+    "url": "https://hourai-carrot.github.io/SancStudy/",
     "description": "中高生向け学習ゲーム・ツールポータル",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://sancstudy.example.com/games.html?q={search_term_string}",
+      "target": "https://hourai-carrot.github.io/SancStudy/games.html?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
@@ -53,6 +53,7 @@
       <li><a href="howto.html">使い方</a></li>
       <li><a href="about.html">運営について</a></li>
       <li><a href="news.html">更新情報</a></li>
+      <li><a href="articles.html">記事</a></li>
     </ul>
   </div>
 </nav>
@@ -229,6 +230,7 @@
               中学生〜
             </span>
           </div>
+                    <div data-content-creator="kanji-war" aria-live="polite"></div>
           <a href="https://hourai-carrot.github.io/KANJI-WAR/" target="_blank" rel="noopener" class="card__btn">
             今すぐプレイ
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -256,6 +258,7 @@
               中学生〜高校生
             </span>
           </div>
+                    <div data-content-creator="leap-over-quest" aria-live="polite"></div>
           <a href="https://hourai-carrot.github.io/LEAP-OVER-QUEST/" target="_blank" rel="noopener" class="card__btn">
             今すぐプレイ
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -283,6 +286,7 @@
               中学生〜高校生
             </span>
           </div>
+                    <div data-content-creator="prime-striker" aria-live="polite"></div>
           <a href="https://beeeeach.github.io/Prime-Striker/" target="_blank" rel="noopener" class="card__btn">
             今すぐプレイ
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -307,15 +311,15 @@
         <div class="stats__label">月間利用者数</div>
       </div>
       <div data-reveal data-reveal-delay="1">
-        <div class="stats__num"><span data-count="4">0</span></div>
+        <div class="stats__num"><span id="stat-content-count" data-count="0">0</span></div>
         <div class="stats__label">コンテンツ数</div>
       </div>
       <div data-reveal data-reveal-delay="2">
-        <div class="stats__num"><span data-count="96">0</span>%</div>
+        <div class="stats__num"><span id="stat-satisfaction" data-count="0">0</span>%</div>
         <div class="stats__label">満足度（レビュー集計）</div>
       </div>
       <div data-reveal data-reveal-delay="3">
-        <div class="stats__num"><span data-count="3">0</span></div>
+        <div class="stats__num"><span id="stat-member-count" data-count="0">0</span></div>
         <div class="stats__label">運営メンバー</div>
       </div>
     </div>
@@ -344,6 +348,7 @@
               スマホ・PC対応
             </span>
           </div>
+                    <div data-content-creator="homework-manager" aria-live="polite"></div>
           <a href="https://homework-manager-azure.vercel.app/" target="_blank" rel="noopener" class="card__btn" style="background:#059669">
             今すぐ使う
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -446,6 +451,7 @@
           <li><a href="games.html">ゲーム一覧</a></li>
           <li><a href="tools.html">ツール一覧</a></li>
           <li><a href="news.html">更新情報</a></li>
+          <li><a href="articles.html">記事</a></li>
         </ul>
       </div>
       <div class="footer__col">

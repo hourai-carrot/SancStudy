@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>記事 | SancStudy</title>
+  <meta name="description" content="SancStudyの記事をお読みいただけます。">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="メインナビゲーション">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="SancStudy ホーム"><img src="assets/logo.png" alt="SancStudy アイコン" class="logo-icon"><img src="assets/logo_text.png" alt="SancStudy" class="logo-text"></a>
+      <button class="nav__hamburger" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav__overlay"></div>
+    <div class="nav__menu"><ul><li><a href="index.html">ホーム</a></li><li><a href="games.html">ゲーム</a></li><li><a href="tools.html">ツール</a></li><li><a href="articles.html">記事</a></li><li><a href="howto.html">使い方</a></li><li><a href="about.html">運営について</a></li><li><a href="news.html">更新情報</a></li></ul></div>
+  </nav>
+
+  <main style="padding-top:var(--nav-h)">
+    <section class="section">
+      <div class="container article-detail">
+        <p style="margin-bottom:24px"><a href="articles.html" class="btn-outline">← 記事一覧へ戻る</a></p>
+        <div id="article-root" aria-live="polite">
+          <p class="dynamic-state dynamic-state--loading">記事を読み込んでいます…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__feedback" data-reveal style="text-align:center"><h3>バグ報告・改善提案・ご要望</h3><p style="margin-bottom:24px">気になった点や「こんな機能が欲しい！」という声をお聞かせください。<br>みなさんのフィードバックがサービス改善につながります。</p><a href="https://docs.google.com/forms/d/e/1FAIpQLSexf_6UlmAfIpSYAt5qz-eD0GVDG0aXGCcMAX6b82G0-uZKJw/viewform?usp=dialog" target="_blank" rel="noopener" class="btn-primary">フィードバックを送る</a></div>
+      <div class="footer__grid"><div class="footer__brand"><a href="index.html" class="footer__logo" aria-label="SancStudy ホーム"><img src="assets/logo.png" alt="SancStudy アイコン" class="logo-icon"><img src="assets/logo_text.png" alt="SancStudy" class="logo-text"></a><p class="footer__tagline">学びを、もっと楽しく。もっと身近に。</p></div><div class="footer__col"><h4>コンテンツ</h4><ul><li><a href="games.html">ゲーム一覧</a></li><li><a href="tools.html">ツール一覧</a></li><li><a href="articles.html">記事</a></li><li><a href="news.html">更新情報</a></li></ul></div><div class="footer__col"><h4>SancStudy</h4><ul><li><a href="howto.html">使い方</a></li><li><a href="about.html">運営について</a></li><li><a href="privacy.html">プライバシーポリシー</a></li><li><a href="index.html#reviews">レビュー</a></li></ul></div></div>
+      <div class="footer__bottom"><span>© 2025–2026 SancStudy. All rights reserved.</span><span>学びを、もっと楽しく。もっと身近に。</span></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

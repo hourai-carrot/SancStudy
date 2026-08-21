@@ -29,6 +29,7 @@
       <li><a href="howto.html">使い方</a></li>
       <li><a href="about.html">運営について</a></li>
       <li><a href="news.html">更新情報</a></li>
+      <li><a href="articles.html">記事</a></li>
     </ul>
   </div>
 </nav>
@@ -58,10 +59,10 @@
           掲載しているすべてのコンテンツは私たちが自ら開発・管理しています。外部サイトへの安全性も私たちが責任を持って保証しています。
         </p>
         <div class="about__meta">
-          <span class="about__meta-item">🗓 運営開始: 2025年4月</span>
-          <span class="about__meta-item">🔄 最終更新: 2026年8月</span>
-          <span class="about__meta-item">👥 運営メンバー: 3名</span>
-          <span class="about__meta-item">📦 コンテンツ数: 4</span>
+          <span class="about__meta-item">🗓 運営開始: <span id="about-started-on">情報を読み込み中…</span></span>
+          <span class="about__meta-item">🔄 最終更新: <span id="about-last-updated">公開情報を読み込み中…</span></span>
+          <span class="about__meta-item">👥 運営メンバー: <span id="about-member-count">情報を読み込み中…</span></span>
+          <span class="about__meta-item">📦 コンテンツ数: <span id="about-content-count">情報を読み込み中…</span></span>
         </div>
       </div>
       <div data-reveal="right">
@@ -71,7 +72,7 @@
             「勉強を義務じゃなくて、<br>楽しみに変えたい。」
           </blockquote>
           <p style="font-size:.88rem;opacity:.85;line-height:1.7">
-            私たちは、学習とエンターテインメントの境界をなくすことで、すべての学生が自発的に学べる環境を作りたいと考えています。
+            <span id="about-mission-copy">私たちは、学習とエンターテインメントの境界をなくすことで、すべての学生が自発的に学べる環境を作りたいと考えています。</span>
           </p>
         </div>
       </div>
@@ -84,30 +85,9 @@
   <div class="container">
     <p class="section-label">Team</p>
     <h2 class="section-title text-center" data-reveal>運営チーム</h2>
-    <p class="section-subtitle text-center" data-reveal>SancStudyを支える3人のメンバーです。</p>
-    <div class="team-grid">
-
-      <div class="team-card" data-reveal data-reveal-delay="1">
-        <div class="team-card__avatar">🎮</div>
-        <div class="team-card__name">hourai-carrot</div>
-        <div class="team-card__role">ゲーム開発 / リーダー</div>
-        <div class="team-card__bio">漢字大戦・LEAP OVER QUESTの開発者。「楽しさと学びの融合」をテーマにゲームを設計。中高生が夢中になれるゲーム体験を追求しています。</div>
-      </div>
-
-      <div class="team-card" data-reveal data-reveal-delay="2">
-        <div class="team-card__avatar">⚡</div>
-        <div class="team-card__name">beeeeach</div>
-        <div class="team-card__role">ゲーム開発 / バックエンド</div>
-        <div class="team-card__bio">Prime Strikerの開発者。リアルタイムオンライン対戦システムを実装。数学の楽しさをゲームで伝えることに情熱を注いでいます。</div>
-      </div>
-
-      <div class="team-card" data-reveal data-reveal-delay="3">
-        <div class="team-card__avatar">📋</div>
-        <div class="team-card__name">ツール担当</div>
-        <div class="team-card__role">ツール開発 / フロントエンド</div>
-        <div class="team-card__bio">宿題マネージャーの開発者。「提出忘れゼロ」を目標に、使いやすいUIと信頼性の高いデータ同期機能を実現しました。</div>
-      </div>
-
+    <p class="section-subtitle text-center" data-reveal>メンバー情報は、最新の公開プロフィールから表示しています。</p>
+    <div class="team-grid" id="team-list" aria-live="polite">
+      <p class="dynamic-state dynamic-state--loading">運営メンバー情報を読み込んでいます…</p>
     </div>
   </div>
 </section>
@@ -152,43 +132,8 @@
   <div class="container" style="max-width:700px">
     <p class="section-label">History</p>
     <h2 class="section-title" data-reveal>SancStudyの歩み</h2>
-    <div style="margin-top:2rem;position:relative;padding-left:28px;border-left:2px solid var(--blue-mid)">
-
-      <div style="margin-bottom:32px;position:relative" data-reveal>
-        <div style="position:absolute;left:-36px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--blue-mid);border:3px solid var(--white);box-shadow:0 0 0 2px var(--blue-mid)"></div>
-        <div style="font-size:.8rem;color:var(--blue-mid);font-weight:700;margin-bottom:.25rem">2025年4月</div>
-        <div style="font-weight:700;margin-bottom:.25rem">SancStudy 運営開始</div>
-        <div style="font-size:.88rem;color:var(--gray-600)">漢字大戦・LEAP OVER QUESTの2タイトルでスタート。</div>
-      </div>
-
-      <div style="margin-bottom:32px;position:relative" data-reveal>
-        <div style="position:absolute;left:-36px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--blue-mid);border:3px solid var(--white);box-shadow:0 0 0 2px var(--blue-mid)"></div>
-        <div style="font-size:.8rem;color:var(--blue-mid);font-weight:700;margin-bottom:.25rem">2025年7月</div>
-        <div style="font-weight:700;margin-bottom:.25rem">Prime Striker リリース</div>
-        <div style="font-size:.88rem;color:var(--gray-600)">オンライン対戦機能を持つ数学ゲームを追加。月間利用者が500人を突破。</div>
-      </div>
-
-      <div style="margin-bottom:32px;position:relative" data-reveal>
-        <div style="position:absolute;left:-36px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--blue-mid);border:3px solid var(--white);box-shadow:0 0 0 2px var(--blue-mid)"></div>
-        <div style="font-size:.8rem;color:var(--blue-mid);font-weight:700;margin-bottom:.25rem">2026年1月</div>
-        <div style="font-weight:700;margin-bottom:.25rem">宿題マネージャー リリース</div>
-        <div style="font-size:.88rem;color:var(--gray-600)">学習管理ツールを追加。Googleアカウント同期機能で好評を得る。</div>
-      </div>
-
-      <div style="margin-bottom:32px;position:relative" data-reveal>
-        <div style="position:absolute;left:-36px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--blue-mid);border:3px solid var(--white);box-shadow:0 0 0 2px var(--blue-mid)"></div>
-        <div style="font-size:.8rem;color:var(--blue-mid);font-weight:700;margin-bottom:.25rem">2026年8月</div>
-        <div style="font-weight:700;margin-bottom:.25rem">SancStudy ポータルサイト リニューアル</div>
-        <div style="font-size:.88rem;color:var(--gray-600)">新デザインのポータルサイトを公開。レビュー機能・フィードバック機能を追加。月間利用者1,200人突破。</div>
-      </div>
-
-      <div style="position:relative" data-reveal>
-        <div style="position:absolute;left:-36px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--blue-light);border:3px solid var(--white);box-shadow:0 0 0 2px var(--blue-light)"></div>
-        <div style="font-size:.8rem;color:var(--blue-light);font-weight:700;margin-bottom:.25rem">Coming Soon</div>
-        <div style="font-weight:700;margin-bottom:.25rem">新コンテンツ開発中</div>
-        <div style="font-size:.88rem;color:var(--gray-600)">単語帳ツール・時間割管理ツールなど、新しいコンテンツを順次リリース予定。</div>
-      </div>
-
+    <div class="history-list" id="history-list" aria-live="polite">
+      <p class="dynamic-state dynamic-state--loading">沿革を読み込んでいます…</p>
     </div>
   </div>
 </section>
@@ -218,6 +163,7 @@
           <li><a href="games.html">ゲーム一覧</a></li>
           <li><a href="tools.html">ツール一覧</a></li>
           <li><a href="news.html">更新情報</a></li>
+          <li><a href="articles.html">記事</a></li>
         </ul>
       </div>
       <div class="footer__col">
@@ -236,6 +182,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>
